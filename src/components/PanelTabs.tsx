@@ -40,53 +40,21 @@ export const PanelTabs = () => {
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+
   const renderSwitch = (value: number) => {
-    switch (value) {
-      case 1:
-        return (
-          <Typography
-            fontSize={25}
-            align="center"
-            textTransform={"uppercase"}
-            sx={{ letterSpacing: 15 }}
-          >
-            Curriculo
-          </Typography>
-        );
-      case 2:
-        return (
-          <Typography
-            fontSize={25}
-            align="center"
-            textTransform={"uppercase"}
-            sx={{ letterSpacing: 15 }}
-          >
-            Portfolio
-          </Typography>
-        );
-      case 3:
-        return (
-          <Typography
-            fontSize={25}
-            align="center"
-            textTransform={"uppercase"}
-            sx={{ letterSpacing: 15 }}
-          >
-            Contato
-          </Typography>
-        );
-      default:
-        return (
-          <Typography
-            fontSize={25}
-            align="center"
-            textTransform={"uppercase"}
-            sx={{ letterSpacing: 15 }}
-          >
-            Sobre mim
-          </Typography>
-        );
-    }
+    const titles = ["Sobre mim", "Currículo", "Portfólio", "Contato"];
+    return (
+      <Typography
+        key={value} // Adiciona a chave para reiniciar a animação
+        fontSize={25}
+        align="center"
+        textTransform={"uppercase"}
+        sx={{ letterSpacing: 15 }}
+        className="typing-effect"
+      >
+        {titles[value]}
+      </Typography>
+    );
   };
 
   return (

@@ -29,17 +29,18 @@ export const AboutMe = () => {
         justifyContent={"center"}
         padding={2}
         xs={12}
-        className="glass"
+        className="glass incrise-size "
         marginBottom={2}
         sx={{
           borderRadius: 5,
+          transition: "transform 0.5s ease-in-out",
+          "&:hover": {
+            animation: "scaleUp 0.5s ease-in-out",
+          },
         }}
       >
         <Grid item xs={1}>
-          <img
-            src="icons/dev.svg"
-            style={{ width: 40 }}
-          />
+          <img src="icons/dev.svg" style={{ width: 40 }} />
         </Grid>
         <Grid item xs={9}>
           <Typography>Desenvolvimento web</Typography>
@@ -60,6 +61,10 @@ export const AboutMe = () => {
         marginBottom={2}
         sx={{
           borderRadius: 5,
+          transition: "transform 0.5s ease-in-out",
+          "&:hover": {
+            animation: "scaleUp 0.5s ease-in-out",
+          },
         }}
       >
         <Grid item xs={1}>
@@ -69,7 +74,8 @@ export const AboutMe = () => {
           <Typography>Web Design</Typography>
           <Typography fontSize={12} color={"grey"} align="justify">
             Criar layouts e intercefaces seguindo os atuais padrões mais
-            mordernos e atualizados do mercado em nivel profissional e com alta qualidade.
+            mordernos e atualizados do mercado em nivel profissional e com alta
+            qualidade.
           </Typography>
         </Grid>
       </Grid>
@@ -84,6 +90,10 @@ export const AboutMe = () => {
         marginBottom={2}
         sx={{
           borderRadius: 5,
+          transition: "transform 0.5s ease-in-out",
+          "&:hover": {
+            animation: "scaleUp 0.5s ease-in-out",
+          },
         }}
       >
         <Grid item xs={1}>

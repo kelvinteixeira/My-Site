@@ -1,7 +1,14 @@
 import { Grid, Typography } from "@mui/material";
 import { SocialMediasCard } from "./SocialMediasCard";
 
-export const PersonalCard = () => {
+type PersonalCardProps = {
+  description: string;
+  phrase: string;
+  subtitle: string;
+  country: string;
+};
+
+export const PersonalCard = (props: PersonalCardProps) => {
   return (
     <>
       <Grid
@@ -23,20 +30,15 @@ export const PersonalCard = () => {
           sx={{ letterSpacing: 4 }}
           marginBottom={2}
           color={"#f9a72e"}
+          textTransform={"uppercase"}
         >
-          DESENVOLVEDOR FULL STACK
+          {props.subtitle}
         </Typography>
-        <Typography
-          fontSize={15}
-          align="justify"
-          marginBottom={2}
-          color={"grey"}
-        >
-          Graduando em Análise e desenvolvimento de sistemas, amante da
-          tecnologia e gamer.{" "}
-          <span style={{ fontSize: 12 }} className="highlight">
-            #React #Frontend #Dota2
-          </span>
+        <Typography fontSize={15} align="justify" color={"grey"}>
+          {props.description}
+        </Typography>
+        <Typography fontSize={12} marginBottom={2}>
+          #React #Frontend #Dota2
         </Typography>
 
         <SocialMediasCard />
@@ -65,13 +67,12 @@ export const PersonalCard = () => {
             fontSize={12}
             sx={{ bgcolor: "#f9a82e93", padding: 0.5, borderRadius: 2 }}
           >
-            Campina Grande, PB Brasil
+            Campina Grande, PB {props.country}
           </Typography>
         </Grid>
 
         <Typography fontSize={10} align="center" fontStyle={"italic"}>
-          "Palavras são na minha não tão humilde opnião nossa inesgotavel fonte
-          de magia, capazes de causa grande injuria ou curar".
+          {props.phrase}
         </Typography>
         <Typography
           fontSize={12}
