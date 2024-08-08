@@ -1,14 +1,9 @@
-import { ThemeProvider } from "@emotion/react";
-import { theme } from "./theme/theme";
-import { Home } from "./Screens/Home";
-import "./i18n.js"
+
+import { AppRoutes } from "./routes.js";
+import "./i18n.js";
 
 function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <Home />
-    </ThemeProvider>
-  );
+  return <AppRoutes />;
 }
 
 export default App;

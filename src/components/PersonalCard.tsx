@@ -34,7 +34,7 @@ export const PersonalCard = (props: PersonalCardProps) => {
         >
           {props.subtitle}
         </Typography>
-        <Typography fontSize={15} align="justify" color={"grey"}>
+        <Typography fontSize={15} align="justify" color={"grey"}  fontWeight={'bold'} >
           {props.description}
         </Typography>
         <Typography fontSize={12} marginBottom={2}>

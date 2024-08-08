@@ -1,26 +1,43 @@
 import { Grid, Typography } from "@mui/material";
 
-export const AboutMe = () => {
+type AboutMeProps = {
+  firstParagraph: string;
+  secondParagraph: string;
+  firstTopic: string;
+  secondTopic: string;
+  fistCardTitle: string;
+  thirdCardTitle: string;
+  fistCard: string;
+  secondCard: string;
+  thirdCard: string;
+};
+
+export const AboutMe = (props: AboutMeProps) => {
   return (
     <>
       <Typography fontSize={25} fontWeight={"bolder"} marginBottom={2}>
-        Quem sou eu
+        {props.firstTopic}
       </Typography>
-      <Typography align="justify" color={"grey"} fontSize={15} marginBottom={2}>
-        Eu sou um criativo aventureiro desbravando a área de programação e todas
-        as belezes de suas melhores tecnologias, tenho 31 anos, por enquanto até
-        eu vim atualizar esse texto e desenvolvo a cerca de 3 anos, por mais que
-        eu seja um dev full stack, eu atuo principalemente no Frontend.
+      <Typography
+        align="justify"
+        color={"grey"}
+        fontSize={15}
+        marginBottom={2}
+        fontWeight={"bold"}
+      >
+        {props.firstParagraph}
       </Typography>
-      <Typography align="justify" color={"grey"} fontSize={15} marginBottom={2}>
-        Trabalho especialmente com React, Typescript e NextJS em projetos
-        monolíticos e micro aplicações empresariais e/ou pessoais, com objetivo
-        em me comprometer com a empresa ou cliente para desenvolver seu sistema
-        da forma que foi requisitada, e sempre com o intuito de organizar,
-        ajudar e agregar valor de negócio.
+      <Typography
+        align="justify"
+        color={"grey"}
+        fontSize={15}
+        marginBottom={2}
+        fontWeight={"bold"}
+      >
+       {props.secondParagraph}
       </Typography>
       <Typography fontSize={25} fontWeight={"bolder"} marginBottom={4}>
-        O que eu faço
+        {props.secondTopic}
       </Typography>
       <Grid
         item
@@ -43,10 +60,9 @@ export const AboutMe = () => {
           <img src="icons/dev.svg" style={{ width: 40 }} />
         </Grid>
         <Grid item xs={9}>
-          <Typography>Desenvolvimento web</Typography>
+          <Typography>{props.fistCardTitle}</Typography>
           <Typography fontSize={12} color={"grey"} align="justify">
-            Desenvolver sites com as mais atualizadas e melhores tecnologias do
-            mercado em nivel profissional e com alta qualidade.
+           {props.fistCard}
           </Typography>
         </Grid>
       </Grid>
@@ -73,9 +89,7 @@ export const AboutMe = () => {
         <Grid item xs={9}>
           <Typography>Web Design</Typography>
           <Typography fontSize={12} color={"grey"} align="justify">
-            Criar layouts e intercefaces seguindo os atuais padrões mais
-            mordernos e atualizados do mercado em nivel profissional e com alta
-            qualidade.
+            {props.secondCard}
           </Typography>
         </Grid>
       </Grid>
@@ -100,10 +114,9 @@ export const AboutMe = () => {
           <img src="icons/app.svg" style={{ width: 40 }} />
         </Grid>
         <Grid item xs={9}>
-          <Typography>Desenvolvimento mobile</Typography>
+          <Typography>{props.thirdCardTitle}</Typography>
           <Typography fontSize={12} color={"grey"} align="justify">
-            Desenvolver aplicacções mobile com as mais atualizadas e melhores
-            tecnologias do mercado em nivel profissional e com alta qualidade.
+            {props.thirdCard}
           </Typography>
         </Grid>
       </Grid>
