@@ -1,14 +1,17 @@
 import { Grid, LinearProgress, Typography } from "@mui/material";
 import { skills } from "../../services/api";
+import { useResponsiveLayout } from "../../hooks/useResponsiveLayout";
 
 type ResumeSkillProps = {
   resumeHardSkillTitle: string;
 };
 
 export const ResumeSkills = (props: ResumeSkillProps) => {
+  const { isSmall, isExtraSmall, isMedium, getFontSize } =
+    useResponsiveLayout();
   return (
     <>
-      <Grid container>
+      <Grid container alignItems={"center"} marginBottom={3}>
         <Grid
           container
           justifyContent={"center"}
@@ -18,12 +21,11 @@ export const ResumeSkills = (props: ResumeSkillProps) => {
             borderRadius: 100,
             bgcolor: "#f9a72e",
             marginRight: 1,
-            marginBottom: 3,
           }}
         >
-          <img src="/icons/skills.svg" style={{ width: 30 }} />
+          <img src="/icons/skills.svg" style={{ width: 25 }} />
         </Grid>
-        <Typography fontSize={25} fontWeight={"bolder"} marginBottom={2}>
+        <Typography fontSize={isExtraSmall ? 15 : 25} fontWeight={"bolder"}>
           {props.resumeHardSkillTitle}
         </Typography>
       </Grid>
@@ -45,23 +47,23 @@ export const ResumeSkills = (props: ResumeSkillProps) => {
             alignItems={"center"}
             key={skill.title}
           >
-            <Grid>
-              <img src={skill.badge} style={{ width: 35 }} />
+            <Grid item xs={1}>
+              <img src={skill.badge} style={{ width: isExtraSmall ? 25 : 35 }} />
             </Grid>
-            <Grid item xs={10}>
+            <Grid item xs={isExtraSmall ? 6 : 9}>
               <LinearProgress
                 variant="determinate"
                 value={skill.value}
                 sx={{
                   width: "auto",
-                  height: 10,
+                  height:isExtraSmall ? 5 : 10,
                   borderRadius: 2,
                   color: "#fff",
                 }}
               />
             </Grid>
-            <Grid item>
-              <Typography>{skill.value}%</Typography>
+            <Grid item xs={1}>
+              <Typography fontSize={isExtraSmall ? 12 : 25}>{skill.value}%</Typography>
             </Grid>
           </Grid>
         ))}

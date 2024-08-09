@@ -7,6 +7,7 @@ import {
   TimelineContent,
 } from "@mui/lab";
 import { Grid, Typography } from "@mui/material";
+import { useResponsiveLayout } from "../../hooks/useResponsiveLayout";
 
 type ResumeAcademicProps = {
   resumeAcademicTitle: string;
@@ -16,12 +17,14 @@ type ResumeAcademicProps = {
   resumeAcademicSecondTitle: string;
   resumeAcademicSecondSubtitle: string;
   resumeAcademicSecondDescription: string;
-}
+};
 
 export const ResumeAcademic = (props: ResumeAcademicProps) => {
+  const { isSmall, isExtraSmall, isMedium, getFontSize } =
+    useResponsiveLayout();
   return (
     <>
-      <Grid container>
+      <Grid container alignItems={"center"}>
         <Grid
           container
           justifyContent={"center"}
@@ -35,7 +38,10 @@ export const ResumeAcademic = (props: ResumeAcademicProps) => {
         >
           <img src="/icons/school.svg" style={{ width: 30 }} />
         </Grid>
-        <Typography fontSize={25} fontWeight={"bolder"} marginBottom={2}>
+        <Typography
+          fontSize={isExtraSmall ? 15 : 25}
+          fontWeight={"bolder"}
+        >
           {props.resumeAcademicTitle}
         </Typography>
       </Grid>
@@ -49,13 +55,36 @@ export const ResumeAcademic = (props: ResumeAcademicProps) => {
             <Typography variant="h6" component="span">
               {props.resumeAcademicFirstTitle}
             </Typography>
-            <Typography fontSize={12} color={"grey"} fontWeight={"bold"}>
+            <Typography
+              sx={{
+                fontSize: `${getFontSize(
+                  isSmall || isExtraSmall ? 0.6 : 1.8
+                )}rem`,
+              }}
+              color={"grey"}
+              fontWeight={"bold"}
+            >
               2018 / 2020 -{" "}
-              <Typography component={"span"} variant="overline">
+              <Typography
+                sx={{
+                  fontSize: `${getFontSize(
+                    isSmall || isExtraSmall ? 0.6 : 1.8
+                  )}rem`,
+                }}
+                component={"span"}
+                variant="overline"
+              >
                 {props.resumeAcademicFirstSubtitle}
               </Typography>
             </Typography>
-            <Typography width={600} fontSize={15}>
+            <Typography
+              width={isExtraSmall ? 200 : isSmall || isMedium ? 400 : 600}
+              sx={{
+                fontSize: `${getFontSize(
+                  isSmall || isExtraSmall ? 1 : 1.8
+                )}rem`,
+              }}
+            >
               {props.resumeAcademicFirstDescription}
             </Typography>
           </TimelineContent>
@@ -69,13 +98,36 @@ export const ResumeAcademic = (props: ResumeAcademicProps) => {
             <Typography variant="h6" component="span">
               {props.resumeAcademicSecondTitle}
             </Typography>
-            <Typography fontSize={12} color={"grey"} fontWeight={"bold"}>
+            <Typography
+              sx={{
+                fontSize: `${getFontSize(
+                  isSmall || isExtraSmall ? 0.6 : 1.8
+                )}rem`,
+              }}
+              color={"grey"}
+              fontWeight={"bold"}
+            >
               2021 -{" "}
-              <Typography component={"span"} variant="overline">
+              <Typography
+                sx={{
+                  fontSize: `${getFontSize(
+                    isSmall || isExtraSmall ? 0.6 : 1.8
+                  )}rem`,
+                }}
+                component={"span"}
+                variant="overline"
+              >
                 {props.resumeAcademicSecondSubtitle}
               </Typography>
             </Typography>
-            <Typography width={600} fontSize={15}>
+            <Typography
+              width={isExtraSmall ? 200 : isSmall || isMedium ? 400 : 600}
+              sx={{
+                fontSize: `${getFontSize(
+                  isSmall || isExtraSmall ? 1 : 1.8
+                )}rem`,
+              }}
+            >
               {props.resumeAcademicSecondDescription}
             </Typography>
           </TimelineContent>
