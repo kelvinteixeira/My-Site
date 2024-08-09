@@ -1,5 +1,6 @@
 import { Grid, Typography } from "@mui/material";
 import { SocialMediasCard } from "./SocialMediasCard";
+import { useResponsiveLayout } from "../hooks/useResponsiveLayout";
 
 type PersonalCardProps = {
   description: string;
@@ -9,6 +10,8 @@ type PersonalCardProps = {
 };
 
 export const PersonalCard = (props: PersonalCardProps) => {
+  const { getFontSize, isSmall, isExtraSmall, isMedium } =
+    useResponsiveLayout();
   return (
     <>
       <Grid
@@ -20,65 +23,117 @@ export const PersonalCard = (props: PersonalCardProps) => {
           borderRadius: 5,
         }}
       >
-        <img src="images/myPhoto.svg" />
-        <Typography fontSize={25} align="center">
+        <Grid container justifyContent={"center"}>
+          <img
+            src="images/myPhoto.svg"
+            style={{
+              width: isSmall || isExtraSmall ? 200 : isMedium ? 250 : 300,
+            }}
+          />
+        </Grid>
+        <Typography
+          variant="h1"
+          align="center"
+          sx={{ fontSize: `${getFontSize(2)}rem` }}
+        >
           Kelvin Teixeira
         </Typography>
         <Typography
-          fontSize={10}
           align="center"
-          sx={{ letterSpacing: 4 }}
           marginBottom={2}
           color={"#f9a72e"}
-          textTransform={"uppercase"}
+          variant="h2"
+          sx={{ fontSize: `${getFontSize(1.6)}rem` }}
         >
           {props.subtitle}
         </Typography>
-        <Typography fontSize={15} align="justify" color={"grey"}  fontWeight={'bold'} >
+        <Typography
+          variant="h3"
+          align="justify"
+          color={"grey"}
+          fontWeight={"bold"}
+          marginBottom={1}
+          sx={{ fontSize: `${getFontSize(1.6)}rem` }}
+        >
           {props.description}
         </Typography>
-        <Typography fontSize={12} marginBottom={2}>
+        <Typography
+          variant="h4"
+          marginBottom={2}
+          sx={{ fontSize: `${getFontSize(1.4)}rem` }}
+        >
           #React #Frontend #Dota2
         </Typography>
 
         <SocialMediasCard />
 
         <Grid container gap={1} alignItems={"center"} marginBottom={2}>
-          <img src="icons/email.svg" style={{ width: 30 }} />
+          <img
+            src="icons/email.svg"
+            style={{ width: isExtraSmall ? 20 : 30 }}
+          />
           <Typography
-            fontSize={12}
-            sx={{ bgcolor: "#f9a82e93", padding: 0.5, borderRadius: 2 }}
+            variant="h6"
+            sx={{
+              bgcolor: "#f9a82e93",
+              padding: 0.5,
+              borderRadius: 2,
+              fontSize: `${getFontSize(1)}rem`,
+            }}
           >
             kelvin.teixeira.dev@gmail.com
           </Typography>
         </Grid>
         <Grid container gap={1} alignItems={"center"} marginBottom={2}>
-          <img src="icons/phone.svg" style={{ width: 30 }} />
+          <img
+            src="icons/phone.svg"
+            style={{ width: isExtraSmall || isSmall ? 20 : 30 }}
+          />
           <Typography
-            fontSize={12}
-            sx={{ bgcolor: "#f9a82e93", padding: 0.5, borderRadius: 2 }}
+            variant="h6"
+            sx={{
+              bgcolor: "#f9a82e93",
+              padding: 0.5,
+              borderRadius: 2,
+              fontSize: `${getFontSize(1)}rem`,
+            }}
           >
             +55 83 99615-7313
           </Typography>
         </Grid>
         <Grid container gap={1} alignItems={"center"} marginBottom={2}>
-          <img src="icons/location.svg" style={{ width: 30 }} />
+          <img
+            src="icons/location.svg"
+            style={{ width: isExtraSmall || isSmall ? 20 : 30 }}
+          />
           <Typography
-            fontSize={12}
-            sx={{ bgcolor: "#f9a82e93", padding: 0.5, borderRadius: 2 }}
+            variant="h6"
+            sx={{
+              bgcolor: "#f9a82e93",
+              padding: 0.5,
+              borderRadius: 2,
+              fontSize: `${getFontSize(1)}rem`,
+            }}
           >
             Campina Grande, PB {props.country}
           </Typography>
         </Grid>
 
-        <Typography fontSize={10} align="center" fontStyle={"italic"}>
+        <Typography
+          variant="h6"
+          marginBottom={1}
+          align="center"
+          fontStyle={"italic"}
+          sx={{ fontSize: `${getFontSize(1)}rem` }}
+        >
           {props.phrase}
         </Typography>
         <Typography
-          fontSize={12}
+          variant="h6"
           align="right"
           color={"#f9a72e"}
           marginBottom={2}
+          sx={{ fontSize: `${getFontSize(1)}rem` }}
         >
           Albus Dumbledore
         </Typography>

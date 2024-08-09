@@ -11,7 +11,7 @@ export const PageNotFound = () => {
       <Grid
         container
         direction={"column"}
-        width={'auto'}
+        width={"auto"}
         justifyContent={"center"}
         alignItems={"center"}
         className="glass"
@@ -25,11 +25,7 @@ export const PageNotFound = () => {
           <Typography fontSize={40}>Error</Typography>
           <img src="icons/404.svg" style={{ width: 200 }} />
         </Grid>
-        <Grid
-          container
-          justifyContent={"center"}
-          alignItems={"center"}
-        >
+        <Grid container justifyContent={"center"} alignItems={"center"}>
           <img src="/icons/sadface.svg" style={{ width: 25, marginRight: 5 }} />
 
           <Typography>Sorry, Page not found</Typography>

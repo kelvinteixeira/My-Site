@@ -1,4 +1,5 @@
 import { Grid, Typography } from "@mui/material";
+import { useResponsiveLayout } from "../hooks/useResponsiveLayout";
 
 type AboutMeProps = {
   firstParagraph: string;
@@ -13,6 +14,8 @@ type AboutMeProps = {
 };
 
 export const AboutMe = (props: AboutMeProps) => {
+  const { getFontSize, isSmall, isExtraSmall, isMedium } =
+    useResponsiveLayout();
   return (
     <>
       <Typography fontSize={25} fontWeight={"bolder"} marginBottom={2}>
@@ -21,20 +24,20 @@ export const AboutMe = (props: AboutMeProps) => {
       <Typography
         align="justify"
         color={"grey"}
-        fontSize={15}
         marginBottom={2}
         fontWeight={"bold"}
+        sx={{ fontSize: `${getFontSize(isSmall || isExtraSmall ? 1 : 2)}rem` }}
       >
         {props.firstParagraph}
       </Typography>
       <Typography
         align="justify"
         color={"grey"}
-        fontSize={15}
         marginBottom={2}
         fontWeight={"bold"}
+        sx={{ fontSize: `${getFontSize(isSmall || isExtraSmall ? 1 : 2)}rem` }}
       >
-       {props.secondParagraph}
+        {props.secondParagraph}
       </Typography>
       <Typography fontSize={25} fontWeight={"bolder"} marginBottom={4}>
         {props.secondTopic}
@@ -56,13 +59,21 @@ export const AboutMe = (props: AboutMeProps) => {
           },
         }}
       >
-        <Grid item xs={1}>
-          <img src="icons/dev.svg" style={{ width: 40 }} />
+        <Grid item xs={isSmall || isExtraSmall || isMedium ? 2 : 1}>
+          <img src="icons/dev.svg" style={{ width: isExtraSmall ? 25 : 40 }} />
         </Grid>
         <Grid item xs={9}>
-          <Typography>{props.fistCardTitle}</Typography>
-          <Typography fontSize={12} color={"grey"} align="justify">
-           {props.fistCard}
+          <Typography sx={{
+              fontSize: `${getFontSize(isSmall || isExtraSmall ? 1 : 2)}rem`,
+            }}>{props.fistCardTitle}</Typography>
+          <Typography
+             sx={{
+              fontSize: `${getFontSize(isSmall || isExtraSmall ? 0.6 : 1.8)}rem`,
+            }}
+            color={"grey"}
+            align="justify"
+          >
+            {props.fistCard}
           </Typography>
         </Grid>
       </Grid>
@@ -83,12 +94,20 @@ export const AboutMe = (props: AboutMeProps) => {
           },
         }}
       >
-        <Grid item xs={1}>
-          <img src="icons/design.svg" style={{ width: 40 }} />
+        <Grid item xs={isSmall || isExtraSmall || isMedium ? 2 : 1}>
+          <img src="icons/design.svg" style={{ width: isExtraSmall ? 25 : 40 }} />
         </Grid>
         <Grid item xs={9}>
-          <Typography>Web Design</Typography>
-          <Typography fontSize={12} color={"grey"} align="justify">
+          <Typography sx={{
+              fontSize: `${getFontSize(isSmall || isExtraSmall ? 1 : 2)}rem`,
+            }}>Web Design</Typography>
+          <Typography
+             sx={{
+              fontSize: `${getFontSize(isSmall || isExtraSmall ? 0.6 : 1.8)}rem`,
+            }}
+            color={"grey"}
+            align="justify"
+          >
             {props.secondCard}
           </Typography>
         </Grid>
@@ -110,12 +129,24 @@ export const AboutMe = (props: AboutMeProps) => {
           },
         }}
       >
-        <Grid item xs={1}>
-          <img src="icons/app.svg" style={{ width: 40 }} />
+        <Grid item xs={isSmall || isExtraSmall || isMedium ? 2 : 1}>
+          <img src="icons/app.svg" style={{ width: isExtraSmall ? 25 : 40 }} />
         </Grid>
         <Grid item xs={9}>
-          <Typography>{props.thirdCardTitle}</Typography>
-          <Typography fontSize={12} color={"grey"} align="justify">
+          <Typography
+            sx={{
+              fontSize: `${getFontSize(isSmall || isExtraSmall ? 1 : 2)}rem`,
+            }}
+          >
+            {props.thirdCardTitle}
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: `${getFontSize(isSmall || isExtraSmall ? 0.6 : 1.8)}rem`,
+            }}
+            color={"grey"}
+            align="justify"
+          >
             {props.thirdCard}
           </Typography>
         </Grid>

@@ -2,9 +2,11 @@ import { Button, Grid } from "@mui/material";
 import { PersonalCard } from "../components/PersonalCard";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { useResponsiveLayout } from "../hooks/useResponsiveLayout";
 import { PanelTabs } from "../components/PanelTabs";
 
 export const Home = () => {
+  const { isExtraSmall, isSmall } = useResponsiveLayout();
   const [value, setValue] = useState(false);
   const { t, i18n } = useTranslation();
 
@@ -13,11 +15,10 @@ export const Home = () => {
     const newLanguage = value ? "pt" : "en";
     i18n.changeLanguage(newLanguage);
   };
-
   return (
     <>
-      <Grid container spacing={2} padding={5}>
-        <Grid item xs={3}>
+      <Grid container padding={"3rem 1rem"} spacing={2} >
+        <Grid item xs={isExtraSmall || isSmall ? 12 : 3} marginBottom={1}>
           <PersonalCard
             description={t("personalCardDescription")}
             phrase={t("personalCardPhrase")}
@@ -25,7 +26,7 @@ export const Home = () => {
             country={t("personalCardCountry")}
           />
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={isExtraSmall || isSmall ? 12 : 9}>
           <Grid
             className="glass"
             height={"100%"}

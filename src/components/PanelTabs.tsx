@@ -9,6 +9,7 @@ import { ResumeExperience } from "./Resume/ResumeExperience";
 import { ResumeLanguages } from "./Resume/ResumeLanguages";
 import { ResumeSkills } from "./Resume/ResumeSkills";
 import { TabProjects } from "./Projects/TabProjects";
+import { useResponsiveLayout } from "../hooks/useResponsiveLayout";
 
 interface TabProps {
   children?: React.ReactNode;
@@ -99,6 +100,7 @@ function a11yProps(index: number) {
 
 export const PanelTabs = (props: PanelTabsProps) => {
   const [value, setValue] = useState(0);
+  const { isSmall, isExtraSmall, isMedium, getFontSize } = useResponsiveLayout();
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -109,11 +111,15 @@ export const PanelTabs = (props: PanelTabsProps) => {
     return (
       <Typography
         key={value}
-        fontSize={25}
         align="center"
         textTransform={"uppercase"}
-        sx={{ letterSpacing: 15 }}
+        sx={{
+          letterSpacing: 15,
+          fontSize: `${getFontSize(isSmall || isExtraSmall ? 1.6 : 2.5)}rem`,
+        }}
         className="typing-effect"
+        variant="h2"
+        marginTop={isSmall || isExtraSmall ? 3 : 0}
       >
         {titles[value]}
       </Typography>
@@ -123,17 +129,22 @@ export const PanelTabs = (props: PanelTabsProps) => {
   return (
     <>
       <Grid container justifyContent={"space-between"} alignItems={"center"}>
-        <Grid item xs={5}>
+        <Grid
+          item
+          xs={isExtraSmall || isSmall ? 12 : 5}
+          sx={{ display: isSmall || isExtraSmall ? "none" : "block" }}
+        >
           {renderSwitch(value)}
         </Grid>
-        <Box
+        <Grid
+          item
+          container
+          justifyContent={"space-evenly"}
+          xs={isExtraSmall || isSmall ? 12 : isMedium ?  7 : 5}
           className="glass"
           sx={{
             borderBottom: 5,
             borderColor: "divider",
-            display: "flex",
-            justifyContent: "end",
-            flexDirection: "column",
             borderRadius: 5,
           }}
         >
@@ -160,7 +171,14 @@ export const PanelTabs = (props: PanelTabsProps) => {
               {...a11yProps(2)}
             />
           </Tabs>
-        </Box>
+        </Grid>
+        <Grid
+          item
+          xs={isExtraSmall || isSmall ? 12 : 5}
+          sx={{ display: isSmall || isExtraSmall ? "block" : "none" }}
+        >
+          {renderSwitch(value)}
+        </Grid>
       </Grid>
       <CustomTabPanel value={value} index={0}>
         <AboutMe

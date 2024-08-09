@@ -8,7 +8,7 @@ export const AppRoutes = () => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-      <img src="images/waves.svg" style={{ position: "absolute" }} />
+      <img src="images/waves.svg" style={{ position: "absolute", width: '100%' }} />
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="*" element={<PageNotFound />} />
