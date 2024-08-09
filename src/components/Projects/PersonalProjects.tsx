@@ -1,4 +1,5 @@
 import { Card, CardMedia, Grid, Link, Typography } from "@mui/material";
+import { useResponsiveLayout } from "../../hooks/useResponsiveLayout";
 
 type PersonalProjectsProps = {
   projectPersonalFirstTitle: string;
@@ -10,16 +11,17 @@ type PersonalProjectsProps = {
 };
 
 export const PersonalProjects = (props: PersonalProjectsProps) => {
+  const {isExtraSmall, isSmall, isMedium, getFontSize} = useResponsiveLayout()
   return (
     <>
       <Grid container gap={1} justifyContent={"space-around"}>
-        <Grid item xs={5}>
+        <Grid item xs={isExtraSmall || isSmall || isMedium ? 12 :5}>
           <Link target="_blank" href={props.projectPersonalFirstILink}>
             <Card
               sx={{
                 borderRadius: 5,
                 marginBottom: 2,
-                height: 200,
+                 height: isExtraSmall? 100 : 200,
                 transition: "transform 0.5s ease",
                 cursor: "pointer",
                 "&:hover": {
@@ -48,7 +50,11 @@ export const PersonalProjects = (props: PersonalProjectsProps) => {
           </Typography>
           <Typography
             color={"grey"}
-            fontSize={13}
+            sx={{
+              fontSize: `${getFontSize(
+                isSmall || isExtraSmall ? 0.7 : 1.5
+              )}rem`,
+            }}
             align="justify"
             marginBottom={1}
           >
@@ -58,18 +64,22 @@ export const PersonalProjects = (props: PersonalProjectsProps) => {
             target="_blank"
             href={props.projectPersonalFirstILink}
             underline="hover"
-            fontSize={12}
+            sx={{
+              fontSize: `${getFontSize(
+                isSmall || isExtraSmall ? 0.5 : 1.6
+              )}rem`,
+            }}
           >
             {props.projectPersonalFirstILink}
           </Link>
         </Grid>
-        <Grid item xs={5}>
+        <Grid item xs={isExtraSmall || isSmall || isMedium ? 12 :5}>
           <Link target="_blank" href={props.projectPersonalSecondILink}>
             <Card
               sx={{
                 borderRadius: 5,
                 marginBottom: 2,
-                height: 200,
+                 height: isExtraSmall? 100 : 200,
                 transition: "transform 0.5s ease",
                 "&:hover": {
                   border: "2px solid #f9a72e",
@@ -97,7 +107,11 @@ export const PersonalProjects = (props: PersonalProjectsProps) => {
           </Typography>
           <Typography
             color={"grey"}
-            fontSize={13}
+            sx={{
+              fontSize: `${getFontSize(
+                isSmall || isExtraSmall ? 0.7 : 1.5
+              )}rem`,
+            }}
             align="justify"
             marginBottom={1}
           >
@@ -107,7 +121,11 @@ export const PersonalProjects = (props: PersonalProjectsProps) => {
             target="_blank"
             href={props.projectPersonalSecondILink}
             underline="hover"
-            fontSize={12}
+            sx={{
+              fontSize: `${getFontSize(
+                isSmall || isExtraSmall ? 0.7 : 1.5
+              )}rem`,
+            }}
           >
             {props.projectPersonalSecondILink}
           </Link>

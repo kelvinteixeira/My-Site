@@ -1,4 +1,5 @@
 import { Card, CardMedia, Grid, Link, Typography } from "@mui/material";
+import { useResponsiveLayout } from "../../hooks/useResponsiveLayout";
 
 type ProfessionalProjectsProps = {
   projectProfessionalFirstTitle: string;
@@ -10,16 +11,19 @@ type ProfessionalProjectsProps = {
 };
 
 export const ProfessionalProjects = (props: ProfessionalProjectsProps) => {
+  const { isExtraSmall, isSmall, isMedium, getFontSize } =
+    useResponsiveLayout();
+
   return (
     <>
       <Grid container gap={1} justifyContent={"space-around"}>
-        <Grid item xs={5}>
+        <Grid item xs={isExtraSmall || isSmall || isMedium ? 12 : 5}>
           <Link target="_blank" href={props.projectProfessionalFirstILink}>
             <Card
               sx={{
                 borderRadius: 5,
                 marginBottom: 2,
-                height: 200,
+                height: isExtraSmall ? 100 : 200,
                 transition: "transform 0.5s ease",
                 "&:hover": {
                   border: "2px solid #f9a72e",
@@ -47,7 +51,11 @@ export const ProfessionalProjects = (props: ProfessionalProjectsProps) => {
           </Typography>
           <Typography
             color={"grey"}
-            fontSize={13}
+            sx={{
+              fontSize: `${getFontSize(
+                isSmall || isExtraSmall ? 0.7 : 1.5
+              )}rem`,
+            }}
             align="justify"
             marginBottom={1}
           >
@@ -57,18 +65,22 @@ export const ProfessionalProjects = (props: ProfessionalProjectsProps) => {
             target="_blank"
             href={props.projectProfessionalFirstILink}
             underline="hover"
-            fontSize={12}
+            sx={{
+              fontSize: `${getFontSize(
+                isSmall || isExtraSmall ? 0.7 : 1.5
+              )}rem`,
+            }}
           >
             {props.projectProfessionalFirstILink}
           </Link>
         </Grid>
-        <Grid item xs={5}>
+        <Grid item xs={isExtraSmall || isSmall || isMedium ? 12 : 5}>
           <Link target="_blank" href={props.projectProfessionalSecondILink}>
             <Card
               sx={{
                 borderRadius: 5,
                 marginBottom: 2,
-                height: 200,
+                height: isExtraSmall ? 100 : 200,
                 transition: "transform 0.5s ease",
                 "&:hover": {
                   border: "2px solid #f9a72e",
@@ -96,7 +108,11 @@ export const ProfessionalProjects = (props: ProfessionalProjectsProps) => {
           </Typography>
           <Typography
             color={"grey"}
-            fontSize={13}
+            sx={{
+              fontSize: `${getFontSize(
+                isSmall || isExtraSmall ? 0.7 : 1.5
+              )}rem`,
+            }}
             align="justify"
             marginBottom={1}
           >
@@ -106,7 +122,11 @@ export const ProfessionalProjects = (props: ProfessionalProjectsProps) => {
             target="_blank"
             href={props.projectProfessionalSecondILink}
             underline="hover"
-            fontSize={12}
+            sx={{
+              fontSize: `${getFontSize(
+                isSmall || isExtraSmall ? 0.7 : 1.5
+              )}rem`,
+            }}
           >
             {props.projectProfessionalSecondILink}
           </Link>
