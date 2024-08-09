@@ -7,8 +7,7 @@ type ResumeSkillProps = {
 };
 
 export const ResumeSkills = (props: ResumeSkillProps) => {
-  const { isSmall, isExtraSmall, isMedium, getFontSize } =
-    useResponsiveLayout();
+  const { isExtraSmall } = useResponsiveLayout();
   return (
     <>
       <Grid container alignItems={"center"} marginBottom={3}>
@@ -48,7 +47,10 @@ export const ResumeSkills = (props: ResumeSkillProps) => {
             key={skill.title}
           >
             <Grid item xs={1}>
-              <img src={skill.badge} style={{ width: isExtraSmall ? 25 : 35 }} />
+              <img
+                src={skill.badge}
+                style={{ width: isExtraSmall ? 25 : 35 }}
+              />
             </Grid>
             <Grid item xs={isExtraSmall ? 6 : 9}>
               <LinearProgress
@@ -56,14 +58,16 @@ export const ResumeSkills = (props: ResumeSkillProps) => {
                 value={skill.value}
                 sx={{
                   width: "auto",
-                  height:isExtraSmall ? 5 : 10,
+                  height: isExtraSmall ? 5 : 10,
                   borderRadius: 2,
                   color: "#fff",
                 }}
               />
             </Grid>
             <Grid item xs={1}>
-              <Typography fontSize={isExtraSmall ? 12 : 25}>{skill.value}%</Typography>
+              <Typography fontSize={isExtraSmall ? 12 : 25}>
+                {skill.value}%
+              </Typography>
             </Grid>
           </Grid>
         ))}
