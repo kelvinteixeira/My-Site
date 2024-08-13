@@ -12,7 +12,7 @@ export const Home = () => {
 
   const changeLanguage = () => {
     setValue((prevValue: boolean) => !prevValue);
-    const newLanguage = value ? "pt" : "en";
+    const newLanguage = value ? "en" : "pt";
     i18n.changeLanguage(newLanguage);
   };
   return (
