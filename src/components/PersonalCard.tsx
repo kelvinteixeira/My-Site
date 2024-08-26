@@ -10,8 +10,14 @@ type PersonalCardProps = {
 };
 
 export const PersonalCard = (props: PersonalCardProps) => {
-  const { getFontSize, isSmall, isExtraSmall, isMedium } =
-    useResponsiveLayout();
+  const {
+    getFontSize,
+    isSmall,
+    isExtraSmall,
+    isMedium,
+    isExtraLarge,
+    isLarge,
+  } = useResponsiveLayout();
   return (
     <>
       <Grid
@@ -78,7 +84,9 @@ export const PersonalCard = (props: PersonalCardProps) => {
               bgcolor: "#f9a82e93",
               padding: 0.5,
               borderRadius: 2,
-              fontSize: `${getFontSize(1)}rem`,
+              fontSize: `${getFontSize(
+                isExtraLarge ? 1.6 : isLarge ? 1.2 : 1
+              )}rem`,
             }}
           >
             kelvin.teixeira.dev@gmail.com
@@ -95,7 +103,9 @@ export const PersonalCard = (props: PersonalCardProps) => {
               bgcolor: "#f9a82e93",
               padding: 0.5,
               borderRadius: 2,
-              fontSize: `${getFontSize(1)}rem`,
+              fontSize: `${getFontSize(
+                isExtraLarge ? 1.6 : isLarge ? 1.2 : 1
+              )}rem`,
             }}
           >
             +55 83 99615-7313
@@ -112,7 +122,9 @@ export const PersonalCard = (props: PersonalCardProps) => {
               bgcolor: "#f9a82e93",
               padding: 0.5,
               borderRadius: 2,
-              fontSize: `${getFontSize(1)}rem`,
+               fontSize: `${getFontSize(
+                isExtraLarge ? 1.6 : isLarge ? 1.2 : 1
+              )}rem`,
             }}
           >
             Campina Grande, PB {props.country}
